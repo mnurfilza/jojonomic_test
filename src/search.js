@@ -1,10 +1,12 @@
 import React,{useState,useEffect} from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import './search.css'
 
 
 function Search() {
   const [input, setInput] = useState({});
+  const [data, setData] = useState([])
   
  
   function searchHandle(e) { 
@@ -14,10 +16,11 @@ function Search() {
     }).then(res=>{
       return res.json()
     }).then(response => {
-      console.log(response.Search)
+      setData(response.Search)
     })
    }
 
+   
    
   return (
     <div>
