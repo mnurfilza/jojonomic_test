@@ -10,7 +10,6 @@ function Search() {
   
  
   function searchHandle(e) { 
-    console.log(input)
     fetch(`http://www.omdbapi.com/?apikey=2dfe16a6&s=${input}`,{
       method:"GET",
     }).then(res=>{
@@ -18,6 +17,19 @@ function Search() {
     }).then(response => {
       setData(response.Search)
     })
+   }
+
+
+   if (data.length !== 0) {
+     var listSearch = (
+       <div>
+          {data.map((res, index)=>
+            <div key={index}>
+              {res.Title}
+            </div>  
+          )}
+       </div>
+     )
    }
 
    
@@ -28,6 +40,8 @@ function Search() {
       <Button variant="contained" onClick={searchHandle} color="primary">
         Search
       </Button>
+
+    {listSearch}      
     </div>
   );
 }
